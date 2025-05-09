@@ -7,10 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Test</h1>
-
-<button><a href="./userSignIn.jsp">Sign In</a></button>
-<button><a href="./userSignUp.jsp">Sign Up</a></button>
+<h1>User Sign In page</h1>
 
 </body>
 </html>
