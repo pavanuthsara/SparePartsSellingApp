@@ -6,8 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import models.Buyer;
+import services.BuyerServices;
 
 @WebServlet("/BuyerSignUp")
 public class BuyerSignUp extends HttpServlet {
@@ -26,9 +28,15 @@ public class BuyerSignUp extends HttpServlet {
 		String address = request.getParameter("address");
 		String mobileNumber = request.getParameter("mobileNumber");
 		
-		Buyer buyer = new Buyer(1, name, email, password, address);
+		Buyer buyer = new Buyer(1, name, email, password, mobileNumber,  address);
+		BuyerServices.register(buyer);
+
+		HttpSession session = request.getSession();
+		session.setAttribute("buyerEmail", email);
+		session.setAttribute("buyerName", name);
 		
-		System.out.println("User password : " + password);
+		response.sendRedirect("buyerDashboard.jsp");
+	
 	}
 
 }

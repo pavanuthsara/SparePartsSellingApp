@@ -16,6 +16,4 @@ public class Buyer extends User{
 		this.shippingAddress = shippingAddress;
 	}
 	
-	
-	
 }
