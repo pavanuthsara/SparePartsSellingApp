@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Buyer;
+
 @WebServlet("/BuyerSignUp")
 public class BuyerSignUp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,6 +25,8 @@ public class BuyerSignUp extends HttpServlet {
 		String password = request.getParameter("password");
 		String address = request.getParameter("address");
 		String mobileNumber = request.getParameter("mobileNumber");
+		
+		Buyer buyer = new Buyer(1, name, email, password, address);
 		
 		System.out.println("User password : " + password);
 	}

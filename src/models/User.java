@@ -5,8 +5,9 @@ public class User {
 	protected String name;
 	protected String email;
 	protected String password;
+	protected String mobileNumber;
 	
-	public User(int userId, String name, String email, String password) {
+	public User(int userId, String name, String email, String password, String mobileNumber) {
 		this.userId = userId;
 		this.name = name;
 		this.email = email;
