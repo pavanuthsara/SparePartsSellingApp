@@ -11,7 +11,7 @@
 <h1>User Sign In page</h1>
 
 <!-- Sign in form for buyer -->
-<form action="">
+<form action="BuyerSignIn" method="post">
 
     <label for="">Enter Email</label>
     <input type="text" name="email" required>

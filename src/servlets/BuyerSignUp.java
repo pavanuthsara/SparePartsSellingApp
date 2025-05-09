@@ -28,7 +28,7 @@ public class BuyerSignUp extends HttpServlet {
 		String address = request.getParameter("address");
 		String mobileNumber = request.getParameter("mobileNumber");
 		
-		Buyer buyer = new Buyer(1, name, email, password, mobileNumber,  address);
+		Buyer buyer = new Buyer(name, email, password, mobileNumber,  address);
 		BuyerServices.register(buyer);
 
 		HttpSession session = request.getSession();

@@ -3,8 +3,13 @@ package models;
 public class Buyer extends User{
 	private String shippingAddress;
 
-	public Buyer(int userId, String name, String email, String password, String mobileNumber, String shippingAddress) {
-		super(userId, name, email, password, mobileNumber);
+	public Buyer(String name, String email, String password, String mobileNumber, String shippingAddress) {
+		super( name, email, password, mobileNumber);
+		this.shippingAddress = shippingAddress;
+	}
+	
+	public Buyer(String name, String email, String mobileNumber, String shippingAddress) {
+		super(name, email, mobileNumber);
 		this.shippingAddress = shippingAddress;
 	}
 
