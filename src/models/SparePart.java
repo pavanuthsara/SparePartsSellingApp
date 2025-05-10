@@ -10,10 +10,10 @@ public class SparePart {
 	private String location;
 	private String description;
 	private String status;
-	private List<ArrayList> imagePaths;
+	private List<String> imagePaths;
 	
 	public SparePart(String title, int quantity, double unitPrice, String location, String description, String status,
-			List<ArrayList> imagePaths) {
+			List<String> imagePaths) {
 		super();
 		this.title = title;
 		this.quantity = quantity;
@@ -72,11 +72,11 @@ public class SparePart {
 		this.status = status;
 	}
 
-	public List<ArrayList> getImagePaths() {
+	public List<String> getImagePaths() {
 		return imagePaths;
 	}
 
-	public void setImagePaths(List<ArrayList> imagePaths) {
+	public void setImagePaths(List<String> imagePaths) {
 		this.imagePaths = imagePaths;
 	}
 	

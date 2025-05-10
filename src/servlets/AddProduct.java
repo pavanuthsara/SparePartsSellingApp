@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import models.SparePart;
+import services.SparePartServices;
+
 @WebServlet("/AddProduct")
 @MultipartConfig(
 	    fileSizeThreshold = 1024 * 1024 * 2, // 2MB
@@ -27,6 +30,7 @@ public class AddProduct extends HttpServlet {
     }
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Add product servlet called");
 		
 		// Get form fields
 		String title = request.getParameter("title");
@@ -60,7 +64,8 @@ public class AddProduct extends HttpServlet {
             }
         }
         
-        
+        SparePart sparePart = new SparePart(title, quantity, unitPrice, location, description, status, imagePaths);
+        SparePartServices.addSparePart(sparePart);
         
         // Store data in request attributes for display
         request.setAttribute("title", title);
@@ -76,7 +81,6 @@ public class AddProduct extends HttpServlet {
         dispatcher.forward(request, response);
 		
 	}
-	
 	
 	// Extract file name from Part
     private String extractFileName(Part part) {

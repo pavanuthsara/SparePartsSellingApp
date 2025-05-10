@@ -8,9 +8,9 @@
 </head>
 <body>
 
-<h1>List you spare part here</h1>
+<h1>List your spare part here</h1>
 
-<form action="" method="post">
+<form action="AddProduct" method="post" enctype="multipart/form-data">
 
     <label for="">Title</label>
     <input type="text" name="title">
@@ -28,11 +28,11 @@
     <textarea name="description" id="" cols="30" rows="5"></textarea>
 
     <!-- image upload input in here -->
-	<label>Upload Images:</label>
+    <label>Upload Images:</label>
     <input type="file" name="images" multiple accept="image/*"><br><br>
         
     <label for=""></label>
-    <select name="status" id="" >
+    <select name="status" id="">
         <option value="used">Used</option>
         <option value="brandNew">Brand New</option>
     </select>
