@@ -14,5 +14,9 @@
 <body>
 <h1>Buyer Dashboard</h1>
 <p>Buyer email</p> <%= buyerEmail %>
+
+<form action="Logout" method="post">
+	<input type="submit" value="logout">
+</form>
 </body>
 </html>

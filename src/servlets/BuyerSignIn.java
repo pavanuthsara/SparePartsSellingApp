@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import models.Buyer;
 import services.BuyerServices;
@@ -27,6 +28,11 @@ public class BuyerSignIn extends HttpServlet {
 			System.out.println("Buyer not available");
 		}else {
 			System.out.println("Buyer login success");
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("buyerEmail", buyer.getEmail());
+			session.setAttribute("buyerName", buyer.getName());
+			
 			response.sendRedirect("buyerDashboard.jsp");
 			//set the session here
 		}
