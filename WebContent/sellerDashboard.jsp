@@ -2,15 +2,14 @@
     pageEncoding="ISO-8859-1"%>
     
     <%
-    	String buyerEmail = (String)session.getAttribute("buyerEmail");
-    
-		//check session exists
-	    if(session == null || buyerEmail == null){
-			response.sendRedirect("userSignIn.jsp");
-			return;
-		}
+    	String sellerEmail = (String)session.getAttribute("sellerEmail");
+    	
+    	//check session exists
+    	if(session == null || sellerEmail == null){
+    		response.sendRedirect("sellerSignIn.jsp");
+    		return;
+    	}
     %>
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +17,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Buyer Dashboard</h1>
-<p>Buyer email</p> <%= buyerEmail %>
+<h1>Seller Dashboard</h1>
+<p>Seller email</p> <%= sellerEmail %>
 
 <form action="Logout" method="post">
 	<input type="submit" value="logout">
