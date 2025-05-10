@@ -8,14 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import models.Buyer;
-import services.BuyerServices;
+import models.Seller;
+import services.SellerServices;
 
-@WebServlet("/BuyerSignIn")
-public class BuyerSignIn extends HttpServlet {
+@WebServlet("/SellerSignIn")
+public class SellerSignIn extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public BuyerSignIn() {
+   
+    public SellerSignIn() {
         super();
     }
 
@@ -23,17 +23,17 @@ public class BuyerSignIn extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		Buyer buyer = BuyerServices.login(email, password);
-		if(buyer == null) {
-			System.out.println("Buyer not available");
+		Seller seller = SellerServices.login(email, password);
+		if(seller == null) {
+			System.out.println("Seller not available");
 		}else {
-			System.out.println("Buyer login success");
+			System.out.println("Seller login success");
 			
 			HttpSession session = request.getSession();
-			session.setAttribute("buyerEmail", buyer.getEmail());
-			session.setAttribute("buyerName", buyer.getName());
+			session.setAttribute("sellerEmail", seller.getEmail());
+			session.setAttribute("sellerName", seller.getName());
 			
-			response.sendRedirect("buyerDashboard.jsp");
+			response.sendRedirect("sellerDashboard.jsp");
 		}
 	}
 

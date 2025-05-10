@@ -10,6 +10,7 @@ public class User {
 		this.name = name;
 		this.email = email;
 		this.password = password;
+		this.mobileNumber = mobileNumber;
 	}
 	
 	public User(String name, String email, String mobileNumber) {
