@@ -42,9 +42,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="products.jsp" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
+                    <a href="addProduct.jsp" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
                         <i class="fas fa-box mr-3"></i>
-                        <span>Products</span>
+                        <span>Add Product</span>
                     </a>
                 </li>
                 <li>
