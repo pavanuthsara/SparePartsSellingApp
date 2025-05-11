@@ -38,7 +38,7 @@ public class BuyerServices {
 			}
 			
 			statement.close();
-			
+			con.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -75,7 +75,7 @@ public class BuyerServices {
 			} else {
 				System.out.println("error with login!, Invalid sid or password!");
 			}
-			
+			con.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

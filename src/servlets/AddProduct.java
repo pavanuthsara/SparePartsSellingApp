@@ -62,12 +62,12 @@ public class AddProduct extends HttpServlet {
         request.setAttribute("location", location);
         request.setAttribute("description", description);
         request.setAttribute("status", status);
-        request.setAttribute("image", image);
+        request.setAttribute("image", imageFileName);
         request.setAttribute("sellerEmail", sellerEmail);
-
+        
         // Forward to a result page
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("productResult.jsp");
-//        dispatcher.forward(request, response);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("productResult.jsp");
+        dispatcher.forward(request, response);
 		
 	}
 

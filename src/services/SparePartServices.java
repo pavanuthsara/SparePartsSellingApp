@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import config.DBConnect;
@@ -19,12 +20,12 @@ public class SparePartServices {
 		String sql = "INSERT INTO spareParts (title, quantity, unitPrice, location, description, status, image, sellerEmail) "
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		
-		DBConnect dbConnect;
 		try {
+			DBConnect dbConnect;
 			dbConnect = DBConnect.getInstance();
 			Connection con = dbConnect.getConnection();
 			
-			PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, sparePart.getTitle());
 			stmt.setInt(2, sparePart.getQuantity() );
 			stmt.setDouble(3, sparePart.getUnitPrice());
@@ -49,6 +50,50 @@ public class SparePartServices {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static ArrayList<SparePart> getAllProducts() {
+		System.out.println("Get all products service called");
+		
+		String sql = "select * from spareParts;";
+		
+		ArrayList<SparePart> productList = new ArrayList<SparePart>();
+		
+		try {
+			DBConnect dbConnect;
+			dbConnect = DBConnect.getInstance();
+			Connection con = dbConnect.getConnection();
+			
+			Statement stmt = con.createStatement();
+			
+			// Execute query
+            ResultSet resultSet = stmt.executeQuery(sql);
+
+            // Process the result set
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id"); 
+                String title = resultSet.getString("title"); 
+                int quantity = resultSet.getInt("quantity");
+                double unitPrice = resultSet.getDouble("unitPrice");
+                String location = resultSet.getString("location"); 
+                String description = resultSet.getString("description"); 
+                String status = resultSet.getString("status"); 
+                String image = resultSet.getString("image"); 
+                String sellerEmail = resultSet.getString("sellerEmail"); 
+                
+                productList.add(new SparePart(title,quantity, unitPrice, location,  description, status, image, sellerEmail));
+            }
+            
+            con.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return productList;
+		
+		
 	}
 
 }

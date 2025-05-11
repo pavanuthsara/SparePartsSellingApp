@@ -38,7 +38,7 @@ public class SellerServices {
 			}
 			
 			statement.close();
-			
+			con.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -74,6 +74,7 @@ public class SellerServices {
 				System.out.println("error with login!, Invalid sid or password!");
 			}
 			
+			con.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
