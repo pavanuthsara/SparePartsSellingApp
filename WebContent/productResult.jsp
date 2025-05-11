@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Product Added</title>
 </head>
 <body>
-
-	<h2>Product Added Successfully!</h2>
+    <h2>Product Added Successfully!</h2>
     <p><strong>Title:</strong> ${title}</p>
     <p><strong>Quantity:</strong> ${quantity}</p>
     <p><strong>Unit Price:</strong> ${unitPrice}</p>
@@ -19,7 +19,6 @@
     <c:forEach var="imagePath" items="${imagePaths}">
         <img src="${imagePath}" alt="Product Image" width="200"><br>
     </c:forEach>
-    <a href="addProduct.jsp">Add Another Product</a>
-
+    <a href="addProduct.jsp">Add Another Product</a> | <a href="Products">View All Products</a>
 </body>
 </html>
