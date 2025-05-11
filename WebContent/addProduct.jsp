@@ -1,5 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%
+	String sellerEmail = (String)session.getAttribute("sellerEmail");
+	
+	// Check if session exists
+	if (session == null || sellerEmail == null) {
+%>
+<script>
+    // Redirect to sellerSignIn.jsp and refresh
+    window.location.href = "sellerSignIn.jsp?t=" + new Date().getTime();
+</script>
+<%
+      return;
+  	}
+%>
+    
 <!DOCTYPE html>
 <html>
 <head>

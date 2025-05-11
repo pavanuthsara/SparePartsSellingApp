@@ -23,7 +23,6 @@ import services.SparePartServices;
 	)
 public class AddProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String UPLOAD_DIR = "uploads";
        
     public AddProduct() {
         super();
@@ -40,32 +39,9 @@ public class AddProduct extends HttpServlet {
 		String description = request.getParameter("description");
 		String status = request.getParameter("status");
 		
-		// Get the upload directory path
-        String applicationPath = request.getServletContext().getRealPath("");
-        String uploadFilePath = applicationPath + File.separator + UPLOAD_DIR;
-
-        // Create upload directory if it doesn't exist
-        File uploadDir = new File(uploadFilePath);
-        if (!uploadDir.exists()) {
-            uploadDir.mkdir();
-        }
         
-        // List to store image paths
-        List<String> imagePaths = new ArrayList<>();
-        
-        // Process uploaded files
-        for (Part part : request.getParts()) {
-            String fileName = extractFileName(part);
-            if (fileName != null && !fileName.isEmpty()) {
-                // Save the file
-                String filePath = uploadFilePath + File.separator + fileName;
-                part.write(filePath);
-                imagePaths.add(UPLOAD_DIR + "/" + fileName);
-            }
-        }
-        
-        SparePart sparePart = new SparePart(title, quantity, unitPrice, location, description, status, imagePaths);
-        SparePartServices.addSparePart(sparePart);
+//        SparePart sparePart = new SparePart(title, quantity, unitPrice, location, description, status, imagePaths);
+//        SparePartServices.addSparePart(sparePart);
         
         // Store data in request attributes for display
         request.setAttribute("title", title);
@@ -74,27 +50,12 @@ public class AddProduct extends HttpServlet {
         request.setAttribute("location", location);
         request.setAttribute("description", description);
         request.setAttribute("status", status);
-        request.setAttribute("imagePaths", imagePaths);
+//        request.setAttribute("imagePaths", imagePaths);
 
         // Forward to a result page
         RequestDispatcher dispatcher = request.getRequestDispatcher("productResult.jsp");
         dispatcher.forward(request, response);
 		
 	}
-	
-	// Extract file name from Part
-    private String extractFileName(Part part) {
-        String contentDisposition = part.getHeader("content-disposition");
-        String[] items = contentDisposition.split(";");
-        for (String item : items) {
-            if (item.trim().startsWith("filename")) {
-                String fileName = item.substring(item.indexOf("=") + 2, item.length() - 1);
-                // Avoid duplicate filenames by adding a timestamp
-                String uniqueFileName = System.currentTimeMillis() + "_" + fileName;
-                return uniqueFileName;
-            }
-        }
-        return null;
-    }
 
 }
