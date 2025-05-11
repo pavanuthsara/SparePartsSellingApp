@@ -43,8 +43,6 @@ public class SparePartServices {
 				System.out.println("Failed to add a product");
 			}
 			
-			con.close();
-			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -81,11 +79,9 @@ public class SparePartServices {
                 String image = resultSet.getString("image"); 
                 String sellerEmail = resultSet.getString("sellerEmail"); 
                 
-                productList.add(new SparePart(title,quantity, unitPrice, location,  description, status, image, sellerEmail));
+                productList.add(new SparePart(id, title,quantity, unitPrice, location,  description, status, image, sellerEmail));
             }
             
-            con.close();
-			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

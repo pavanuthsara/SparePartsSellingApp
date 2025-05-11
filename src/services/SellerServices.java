@@ -38,7 +38,7 @@ public class SellerServices {
 			}
 			
 			statement.close();
-			con.close();
+//			con.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -51,8 +51,8 @@ public class SellerServices {
 		String sqlQuery = "select * from seller where email=? and password=?;";
 		Seller seller = null;
 		
-		DBConnect dbConnect;
 		try {
+			DBConnect dbConnect;
 			dbConnect = DBConnect.getInstance();
 			Connection con = dbConnect.getConnection();
 			PreparedStatement statement = con.prepareStatement(sqlQuery);
@@ -74,7 +74,7 @@ public class SellerServices {
 				System.out.println("error with login!, Invalid sid or password!");
 			}
 			
-			con.close();
+//			con.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

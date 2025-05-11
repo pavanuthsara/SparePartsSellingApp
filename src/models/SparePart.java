@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SparePart {
+	private int id;
 	private String title;
 	private int quantity;
 	private double unitPrice;
@@ -24,6 +25,28 @@ public class SparePart {
 		this.status = status;
 		this.image = image;
 		this.sellerEmail = sellerEmail;
+	}
+	
+	public SparePart(int id, String title, int quantity, double unitPrice, String location, String description,
+			String status, String image, String sellerEmail) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.quantity = quantity;
+		this.unitPrice = unitPrice;
+		this.location = location;
+		this.description = description;
+		this.status = status;
+		this.image = image;
+		this.sellerEmail = sellerEmail;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
