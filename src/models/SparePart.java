@@ -10,10 +10,11 @@ public class SparePart {
 	private String location;
 	private String description;
 	private String status;
-	private List<String> imagePaths;
+	private String image;
+	private String sellerEmail;
 	
 	public SparePart(String title, int quantity, double unitPrice, String location, String description, String status,
-			List<String> imagePaths) {
+			String image, String sellerEmail) {
 		super();
 		this.title = title;
 		this.quantity = quantity;
@@ -21,7 +22,8 @@ public class SparePart {
 		this.location = location;
 		this.description = description;
 		this.status = status;
-		this.imagePaths = imagePaths;
+		this.image = image;
+		this.sellerEmail = sellerEmail;
 	}
 
 	public String getTitle() {
@@ -72,12 +74,22 @@ public class SparePart {
 		this.status = status;
 	}
 
-	public List<String> getImagePaths() {
-		return imagePaths;
+	public String getImagePath() {
+		return image;
 	}
 
-	public void setImagePaths(List<String> imagePaths) {
-		this.imagePaths = imagePaths;
+	public void setImagePath(String image) {
+		this.image = image;
 	}
+
+	public String getSellerEmail() {
+		return sellerEmail;
+	}
+
+	public void setSellerEmail(String sellerEmail) {
+		this.sellerEmail = sellerEmail;
+	}
+	
+	
 	
 }

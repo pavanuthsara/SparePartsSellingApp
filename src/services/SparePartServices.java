@@ -16,8 +16,8 @@ public class SparePartServices {
 	public static void addSparePart(SparePart sparePart) {
 		System.out.println("Add spare part service called");
 		
-		String sql = "INSERT INTO spareParts (title, quantity, unitPrice, location, description, status) "
-				+ "VALUES (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO spareParts (title, quantity, unitPrice, location, description, status, image, sellerEmail) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		DBConnect dbConnect;
 		try {
@@ -31,25 +31,17 @@ public class SparePartServices {
 			stmt.setString(4, sparePart.getLocation());
 			stmt.setString(5, sparePart.getDescription());
 			stmt.setString(6, sparePart.getStatus());
+			stmt.setString(7, sparePart.getImagePath());
+			stmt.setString(8, sparePart.getSellerEmail());
 			
-			stmt.executeUpdate();
+			int row = stmt.executeUpdate();
 			
-			// Get the generated product ID
-			ResultSet rs = stmt.getGeneratedKeys();
-			int sparePartId = rs.next() ? rs.getInt(1) : -1;
-			
-			// Insert image paths
-			sql = "INSERT INTO sparePartImages (sparePartId, imagePath) VALUES (?, ?)";
-			stmt = con.prepareStatement(sql);
-			
-			List<String> imagePaths = sparePart.getImagePaths();
-			
-			for (String imagePath : imagePaths) {
-			    stmt.setInt(1, sparePartId);
-			    stmt.setString(2, imagePath);
-			    stmt.executeUpdate();
+			if(row>0) {
+				System.out.println("Product added successfully");
+			} else {
+				System.out.println("Failed to add a product");
 			}
-
+			
 			con.close();
 			
 		} catch (ClassNotFoundException e) {
@@ -57,9 +49,6 @@ public class SparePartServices {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
 	}
 
 }

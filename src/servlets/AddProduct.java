@@ -35,6 +35,7 @@ public class AddProduct extends HttpServlet {
 		String description = request.getParameter("description");
 		String status = request.getParameter("status");
 		String image = request.getParameter("image");
+		String sellerEmail = request.getParameter("sellerEmail");
 		
 		Part file = request.getPart("image");
 		String imageFileName = file.getSubmittedFileName();
@@ -51,8 +52,8 @@ public class AddProduct extends HttpServlet {
         fos.write(data);
         fos.close();
         
-//        SparePart sparePart = new SparePart(title, quantity, unitPrice, location, description, status, imagePaths);
-//        SparePartServices.addSparePart(sparePart);
+        SparePart sparePart = new SparePart(title, quantity, unitPrice, location, description, status, imageFileName, sellerEmail);
+        SparePartServices.addSparePart(sparePart);
         
         // Store data in request attributes for display
         request.setAttribute("title", title);
@@ -61,7 +62,8 @@ public class AddProduct extends HttpServlet {
         request.setAttribute("location", location);
         request.setAttribute("description", description);
         request.setAttribute("status", status);
-//        request.setAttribute("imagePaths", imagePaths);
+        request.setAttribute("image", image);
+        request.setAttribute("sellerEmail", sellerEmail);
 
         // Forward to a result page
 //        RequestDispatcher dispatcher = request.getRequestDispatcher("productResult.jsp");
