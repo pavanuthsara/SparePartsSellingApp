@@ -50,7 +50,7 @@ public class SparePartServices {
 			    stmt.executeUpdate();
 			}
 
-			con.close();
+//			con.close();
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
