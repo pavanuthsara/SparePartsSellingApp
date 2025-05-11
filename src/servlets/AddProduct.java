@@ -15,12 +15,8 @@ import javax.servlet.http.Part;
 import models.SparePart;
 import services.SparePartServices;
 
+@MultipartConfig
 @WebServlet("/AddProduct")
-@MultipartConfig(
-	    fileSizeThreshold = 1024 * 1024 * 2, // 2MB
-	    maxFileSize = 1024 * 1024 * 10,      // 10MB
-	    maxRequestSize = 1024 * 1024 * 50    // 50MB
-	)
 public class AddProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -38,7 +34,22 @@ public class AddProduct extends HttpServlet {
 		String location = request.getParameter("location");
 		String description = request.getParameter("description");
 		String status = request.getParameter("status");
+		String image = request.getParameter("image");
 		
+		Part file = request.getPart("image");
+		String imageFileName = file.getSubmittedFileName();
+        System.out.println("selected file name : " + imageFileName);
+        
+        String uploadPath = "C:/Users/pavan/eclipse-webapp/SparePartsSellingApp/WebContent/images/" + imageFileName;
+        System.out.println("upload file path : " + uploadPath);
+        
+        FileOutputStream fos = new FileOutputStream(uploadPath);
+        InputStream is = file.getInputStream();
+        
+        byte[] data = new byte[is.available()];
+        is.read(data);
+        fos.write(data);
+        fos.close();
         
 //        SparePart sparePart = new SparePart(title, quantity, unitPrice, location, description, status, imagePaths);
 //        SparePartServices.addSparePart(sparePart);
@@ -53,8 +64,8 @@ public class AddProduct extends HttpServlet {
 //        request.setAttribute("imagePaths", imagePaths);
 
         // Forward to a result page
-        RequestDispatcher dispatcher = request.getRequestDispatcher("productResult.jsp");
-        dispatcher.forward(request, response);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("productResult.jsp");
+//        dispatcher.forward(request, response);
 		
 	}
 

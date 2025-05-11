@@ -45,13 +45,15 @@
 
     <!-- image upload input in here -->
     <label>Upload Images:</label>
-    <input type="file" name="images" multiple accept="image/*"><br><br>
+    <input type="file" name="image"><br><br>
         
     <label for=""></label>
     <select name="status" id="">
         <option value="used">Used</option>
         <option value="brandNew">Brand New</option>
     </select>
+    
+    <input type="text" name="sellerEmail" value=<%= sellerEmail %>>
 
     <button type="submit">Submit Spare Part</button>
 </form>
