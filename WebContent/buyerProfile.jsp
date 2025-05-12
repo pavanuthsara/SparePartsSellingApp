@@ -112,10 +112,10 @@
                 </div>
             </div>
             <div class="mt-6 flex space-x-4">
-                <a href=BuyerEditProfile class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                <a href=BuyerEditProfile class="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700">
                     <i class="fas fa-edit mr-2"></i>Edit Details
                 </a>
-                <form action="DeleteProfile" method="post" onsubmit="return confirm('Are you sure you want to delete your profile? This action cannot be undone.');">
+                <form action="BuyerDeleteProfile" method="post" onsubmit="return confirm('Are you sure you want to delete your profile? This action cannot be undone.');">
                     <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
                         <i class="fas fa-trash-alt mr-2"></i>Delete Profile
                     </button>

@@ -6,6 +6,13 @@
 <meta charset="ISO-8859-1">
 <title>User Sign Up</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<style>
+    body {
+        background-image: url('./img/background.webp');
+        background-size: cover;
+        background-position: center;
+    }
+</style>
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center bg-[url('https://source.unsplash.com/random/1920x1080')] bg-cover bg-center">
 <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">

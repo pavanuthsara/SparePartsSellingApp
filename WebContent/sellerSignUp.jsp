@@ -11,6 +11,8 @@
 <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
     <h1 class="text-2xl font-bold text-center text-gray-800 mb-4">Seller Sign Up</h1>
 
+	<h2 class="text-center text-gray-600 mb-6">Need to become a buyer? <a href="./buyerSignUp.jsp" class="text-yellow-700 hover:underline">Click here</a></h2>
+	
     <!-- Sign up form for seller -->
     <form action="SellerSignUp" method="post" onsubmit="return validateForm()" id="signupForm" class="space-y-4">
         <div>
@@ -56,6 +58,7 @@
         <div id="conditionsError" class="error text-red-500 text-xs mt-1 hidden">You must accept the terms and conditions</div>
 
         <button type="submit" class="w-full bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2">Sign Up</button>
+        <h2 class="text-center text-gray-600 mb-6">Have an account? <a href="./sellerSignIn.jsp" class="text-yellow-700 hover:underline">Sign in here</a></h2>
     </form>
 </div>
 
