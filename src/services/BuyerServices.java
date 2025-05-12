@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import config.DBConnect;
 import models.Buyer;
 
@@ -38,7 +37,6 @@ public class BuyerServices {
 			}
 			
 			statement.close();
-//			con.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -75,7 +73,6 @@ public class BuyerServices {
 			} else {
 				System.out.println("error with login!, Invalid sid or password!");
 			}
-//			con.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -85,7 +82,7 @@ public class BuyerServices {
 		return buyer;
 	}
 	
-	//get profile deatils
+	//get profile details
 	public static Buyer getProfileDetails(String email) {
 		Buyer buyer = null;
 		String sqlQuery = "select * from buyer where email=?;";
@@ -120,6 +117,72 @@ public class BuyerServices {
 		return buyer;
 	}
 	
-
+	//update profile
+	public static boolean updateProfile(Buyer buyer) {
+		String sqlQuery = "update buyer set name=?, mobileNumber=?, address=? where email=?;";
+		boolean success = false;
+		
+		try {
+			DBConnect dbConnect = DBConnect.getInstance();
+			Connection con = dbConnect.getConnection();
+			PreparedStatement statement = con.prepareStatement(sqlQuery);
+			
+			statement.setString(1, buyer.getName());
+			statement.setString(2, buyer.getMobileNumber());
+			statement.setString(3, buyer.getShippingAddress());
+			statement.setString(4, buyer.getEmail());
+			
+			System.out.println(statement);
+			
+			int result = statement.executeUpdate();
+			
+			if(result > 0) {
+				System.out.println("Update success, Buyer profile updated");
+				success = true;
+			} else {
+				System.out.println("Update unsuccessful!");
+			}
+			
+			statement.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return success;
+	}
 	
+	//delete profile
+	public static boolean deleteProfile(String email) {
+		String sqlQuery = "delete from buyer where email=?;";
+		boolean success = false;
+		
+		try {
+			DBConnect dbConnect = DBConnect.getInstance();
+			Connection con = dbConnect.getConnection();
+			PreparedStatement statement = con.prepareStatement(sqlQuery);
+			
+			statement.setString(1, email);
+			
+			System.out.println(statement);
+			
+			int result = statement.executeUpdate();
+			
+			if(result > 0) {
+				System.out.println("Delete success, Buyer profile deleted");
+				success = true;
+			} else {
+				System.out.println("Delete unsuccessful!");
+			}
+			
+			statement.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return success;
+	}
 }
