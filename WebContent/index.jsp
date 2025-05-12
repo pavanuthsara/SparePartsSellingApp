@@ -32,7 +32,7 @@
             <p class="text-lg mb-8">Buy quality parts or sell your spares with ease.</p>
             <div class="flex justify-center space-x-4">
                 <a href="#" class="bg-white text-orange-600 px-6 py-3 rounded font-semibold hover:bg-gray-100">Browse Parts</a>
-                <a href="#" class="border-2 border-black text-black px-6 py-3 rounded font-semibold hover:bg-white hover:text-blue-600">Start Selling</a>
+                <a href="sellerSignUp.jsp" class="border-2 border-black text-black px-6 py-3 rounded font-semibold hover:bg-white hover:text-blue-600">Start Selling</a>
             </div>
         </div>
     </section>

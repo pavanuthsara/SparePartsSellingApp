@@ -1,15 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
+<%@ page import="models.Seller" %>
+
 <%
-    String sellerEmail = (String)session.getAttribute("sellerEmail");
-    
     // Check if session exists
+    String sellerEmail = (String) session.getAttribute("sellerEmail");
     if (session == null || sellerEmail == null) {
 %>
         <script>
-            // Redirect to sellerSignIn.jsp and refresh
             window.location.href = "sellerSignIn.jsp?t=" + new Date().getTime();
+        </script>
+<%
+        return;
+    }
+
+    // Get seller object from request
+    Seller seller = (Seller) request.getAttribute("seller");
+    if (seller == null) {
+%>
+        <script>
+            alert("Unable to fetch profile details!");
+            window.location.href = "sellerDashboard.jsp";
         </script>
 <%
         return;
@@ -19,7 +30,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Seller Dashboard</title>
+<title>Seller Profile</title>
 <!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 <!-- Font Awesome for icons -->
@@ -42,7 +53,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="addProduct.jsp" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
+                    <a href="addProduct.jsp" class="flex items-center p-2 rounded-lg hover:bg-gray-7
+                    00">
                         <i class="fas fa-box mr-3"></i>
                         <span>Add Product</span>
                     </a>
@@ -54,7 +66,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="SellerProfile" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
+                    <a href="SellerProfile" class="flex items-center p-2 rounded-lg bg-gray-700">
                         <i class="fas fa-user mr-3"></i>
                         <span>Profile</span>
                     </a>
@@ -78,9 +90,38 @@
         <button id="toggleSidebar" class="md:hidden p-2 bg-gray-800 text-white rounded mb-4">
             <i class="fas fa-bars"></i>
         </button>
-        <h1 class="text-3xl font-bold mb-4">Welcome, <%= sellerEmail %></h1>
-        <p class="text-gray-700">This is your seller dashboard. Use the sidebar to navigate through your products, orders, and profile.</p>
-        <!-- Add more dashboard content here -->
+        <h1 class="text-3xl font-bold mb-4">Seller Profile</h1>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Profile Details</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-gray-700 font-medium">Name</label>
+                    <p class="text-gray-900"><%= seller.getName() %></p>
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-medium">Email</label>
+                    <p class="text-gray-900"><%= seller.getEmail() %></p>
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-medium">Mobile Number</label>
+                    <p class="text-gray-900"><%= seller.getMobileNumber() %></p>
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-medium">Store Name</label>
+                    <p class="text-gray-900"><%= seller.getStoreName() %></p>
+                </div>
+            </div>
+            <div class="mt-6 flex space-x-4">
+                <a href="EditSellerProfile" class="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700">
+                    <i class="fas fa-edit mr-2"></i>Edit Details
+                </a>
+                <form action="SellerDeleteProfile" method="post" onsubmit="return confirm('Are you sure you want to delete your profile? This action cannot be undone.');">
+                    <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+                        <i class="fas fa-trash-alt mr-2"></i>Delete Profile
+                    </button>
+                </form>
+            </div>
+        </div>
     </main>
 
     <!-- JavaScript for Sidebar Toggle -->

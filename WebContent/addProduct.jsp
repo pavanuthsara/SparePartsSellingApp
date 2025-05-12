@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="profile.jsp" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
+                    <a href="SellerProfile" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
                         <i class="fas fa-user mr-3"></i>
                         <span>Profile</span>
                     </a>
