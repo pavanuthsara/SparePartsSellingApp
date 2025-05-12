@@ -33,7 +33,7 @@ public class SellerSignIn extends HttpServlet {
 			session.setAttribute("sellerEmail", seller.getEmail());
 			session.setAttribute("sellerName", seller.getName());
 			
-			response.sendRedirect("sellerDashboard.jsp");
+			response.sendRedirect("GetSellerProducts");
 		}
 	}
 

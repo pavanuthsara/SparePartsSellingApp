@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
+<%@ page import="java.util.ArrayList, models.SparePart" %>
+
 <%
     String sellerEmail = (String)session.getAttribute("sellerEmail");
     
@@ -14,6 +15,9 @@
 <%
         return;
     }
+    
+    // Get products from request attribute
+    ArrayList<SparePart> products = (ArrayList<SparePart>) request.getAttribute("products");
 %>
 <!DOCTYPE html>
 <html>
@@ -79,8 +83,38 @@
             <i class="fas fa-bars"></i>
         </button>
         <h1 class="text-3xl font-bold mb-4">Welcome, <%= sellerEmail %></h1>
-        <p class="text-gray-700">This is your seller dashboard. Use the sidebar to navigate through your products, orders, and profile.</p>
-        <!-- Add more dashboard content here -->
+        
+        <!-- Products Section -->
+        <div class="mt-6">
+            <h2 class="text-2xl font-semibold mb-4">Your Products</h2>
+            <% if (products == null || products.isEmpty()) { %>
+                <p class="text-gray-700">No products found. Add products using the "Add Product" option.</p>
+            <% } else { %>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <% for (SparePart product : products) { %>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <img src="<%= product.getImagePath() %>" alt="<%= product.getTitle() %>" class="w-full h-48 object-cover rounded-md mb-4">
+                            <h3 class="text-xl font-semibold"><%= product.getTitle() %></h3>
+                            <p class="text-gray-600">Price: $<%= product.getUnitPrice() %></p>
+                            <p class="text-gray-600">Quantity: <%= product.getQuantity() %></p>
+                            <p class="text-gray-600">Location: <%= product.getLocation() %></p>
+                            <p class="text-gray-600">Status: <%= product.getStatus() %></p>
+                            <div class="mt-4 flex space-x-2">
+                                <a href="editProduct.jsp?id=<%= product.getId() %>" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                                    <i class="fas fa-edit mr-2"></i>Edit
+                                </a>
+                                <form action="DeleteProduct" method="post">
+                                    <input type="hidden" name="productId" value="<%= product.getId() %>">
+                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" onclick="return confirm('Are you sure you want to delete this product?')">
+                                        <i class="fas fa-trash mr-2"></i>Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            <% } %>
+        </div>
     </main>
 
     <!-- JavaScript for Sidebar Toggle -->
@@ -91,6 +125,15 @@
         toggleSidebar.addEventListener('click', () => {
             sidebar.classList.toggle('-translate-x-full');
         });
+
+        // Automatically fetch products when the page loads
+        window.onload = function() {
+            fetch('GetSellerProducts')
+                .then(response => response.text())
+                .then(data => {
+                    // Page is reloaded by the servlet
+                });
+        };
     </script>
 </body>
 </html>

@@ -36,7 +36,7 @@ public class SellerSignUp extends HttpServlet {
 		session.setAttribute("sellerEmail", email);
 		session.setAttribute("sellerName", name);
 		
-		response.sendRedirect("sellerDashboard.jsp");
+		response.sendRedirect("sGetSellerProducts");
 		
 	}
 
