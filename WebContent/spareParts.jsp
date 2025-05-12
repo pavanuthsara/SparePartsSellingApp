@@ -79,20 +79,32 @@
             <i class="fas fa-bars"></i>
         </button>
         <div class="container mx-auto px-4 py-8">
-            <h1 class="text-3xl font-bold text-center mb-8">Spare Parts Catalog</h1>
+            <div class="flex justify-between items-center mb-8">
+                <h1 class="text-3xl font-bold">Spare Parts Catalog</h1>
+                <a href="checkout.jsp" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                    <i class="fas fa-shopping-cart mr-2"></i>View Cart
+                </a>
+            </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <c:forEach var="product" items="${products}">
                     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
                         <img src="${pageContext.request.contextPath}/images/${product.imagePath}" alt="${product.title}" class="w-full h-48 object-cover" onerror="this.src='https://via.placeholder.com/150';">
                         <div class="p-4">
                             <h2 class="text-xl font-semibold mb-2">${product.title}</h2>
-                            <p class="text-gray-600 mb-2">Product ID : ${product.id}</p>
+                            <p class="text-gray-600 mb-2">Product ID: ${product.id}</p>
                             <p class="text-gray-600 mb-2">${product.description}</p>
                             <p class="text-lg font-bold text-orange-600 mb-2">${product.unitPrice} LKR</p>
                             <p class="text-sm text-gray-500 mb-1">Quantity: ${product.quantity}</p>
                             <p class="text-sm text-gray-500 mb-1">Location: ${product.location}</p>
                             <p class="text-sm text-gray-500 mb-1">Status: ${product.status}</p>
-                            <p class="text-sm text-gray-500">Seller: ${product.sellerEmail}</p>
+                            <       <p class="text-sm text-gray-500">Seller: ${product.sellerEmail}</p>
+                            <form action="AddToCart" method="post">
+                                <input type="hidden" name="productId" value="${product.id}">
+                                <input type="number" name="quantity" min="1" max="${product.quantity}" value="1" class="w-20 p-1 border rounded">
+                                <button type="submit" class="mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+                                    <i class="fas fa-cart-plus mr-2"></i>Add to Cart
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </c:forEach>

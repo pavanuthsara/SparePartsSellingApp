@@ -91,5 +91,46 @@ public class SparePartServices {
 		
 		
 	}
+	
+	
+	public static SparePart getSparePartById(int id) {
+		System.out.println("Get product by id service called");
+		
+		String sql = "select * from spareParts where id=?;";
+		
+		try {
+			DBConnect dbConnect;
+			dbConnect = DBConnect.getInstance();
+			Connection con = dbConnect.getConnection();
+			
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, id);
+			
+			// Execute query
+            ResultSet resultSet = stmt.executeQuery();
+
+            // Process the result set
+            while (resultSet.next()) {
+                int sparePartId = resultSet.getInt("id"); 
+                String title = resultSet.getString("title"); 
+                int quantity = resultSet.getInt("quantity");
+                double unitPrice = resultSet.getDouble("unitPrice");
+                String location = resultSet.getString("location"); 
+                String description = resultSet.getString("description"); 
+                String status = resultSet.getString("status"); 
+                String image = resultSet.getString("image"); 
+                String sellerEmail = resultSet.getString("sellerEmail"); 
+                SparePart sparePart = new SparePart(id, title,quantity, unitPrice, location,  description, status, image, sellerEmail);
+                return sparePart;
+            }
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+		
+	}
 
 }
