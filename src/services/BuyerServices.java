@@ -85,6 +85,41 @@ public class BuyerServices {
 		return buyer;
 	}
 	
+	//get profile deatils
+	public static Buyer getProfileDetails(String email) {
+		Buyer buyer = null;
+		String sqlQuery = "select * from buyer where email=?;";
+		
+		try {
+			DBConnect dbConnect;
+			dbConnect = DBConnect.getInstance();
+			Connection con = dbConnect.getConnection();
+			PreparedStatement statement = con.prepareStatement(sqlQuery);
+		
+			statement.setString(1, email);
+
+			ResultSet results = statement.executeQuery();
+
+			if(results.next()){
+				String buyerEmail = results.getString(2);
+				String buyerName = results.getString(3);
+				String address = results.getString(5);
+				String mobileNumber = results.getString(6);
+				
+				buyer = new Buyer(buyerName, buyerEmail, mobileNumber, address);
+				System.out.println("Buyer fetched successfully");
+			} else {
+				System.out.println("error with fetching buyer!, Invalid sid or password!");
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return buyer;
+	}
+	
 
 	
 }

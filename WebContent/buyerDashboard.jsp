@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="GetAllProducts" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
+                    <a href="BuyerProfile" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
                         <i class="fas fa-user mr-3"></i>
                         <span>Profile</span>
                     </a>
