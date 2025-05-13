@@ -36,7 +36,7 @@
         <nav class="flex-1 p-4">
             <ul class="space-y-2">
                 <li>
-                    <a href="sellerDashboard.jsp" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
+                    <a href="GetSellerProducts" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
                         <i class="fas fa-tachometer-alt mr-3"></i>
                         <span>Dashboard</span>
                     </a>

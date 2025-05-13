@@ -93,7 +93,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <% for (SparePart product : products) { %>
                         <div class="bg-white p-6 rounded-lg shadow-md">
-                            <img src="<%= product.getImagePath() %>" alt="<%= product.getTitle() %>" class="w-full h-48 object-cover rounded-md mb-4">
+                            <img src="./images<%= product.getImagePath() %>" alt="<%= product.getTitle() %>" class="w-full h-48 object-cover rounded-md mb-4">
                             <h3 class="text-xl font-semibold"><%= product.getTitle() %></h3>
                             <p class="text-gray-600">Price: $<%= product.getUnitPrice() %></p>
                             <p class="text-gray-600">Quantity: <%= product.getQuantity() %></p>
