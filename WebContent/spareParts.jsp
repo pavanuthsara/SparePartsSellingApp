@@ -80,6 +80,8 @@
         </button>
         <div class="container mx-auto px-4 py-8">
             <h1 class="text-3xl font-bold text-center mb-8">Spare Parts Catalog</h1>
+            <h3>Cart items : ${noOfCartItems}</h3> 
+            <a href="CartCheckout">Proceed to cehckout</a>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <c:forEach var="product" items="${products}">
                     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
@@ -93,6 +95,13 @@
                             <p class="text-sm text-gray-500 mb-1">Location: ${product.location}</p>
                             <p class="text-sm text-gray-500 mb-1">Status: ${product.status}</p>
                             <p class="text-sm text-gray-500">Seller: ${product.sellerEmail}</p>
+                            
+                            <form method="get" action="AddToCart" >
+                            	<input type="hidden" value=${product.id} name="productId">
+                            	<input type="hidden" value=${product.unitPrice} name="unitPrice">
+                            	<input type="number" placeholder="quantity" name="quantity">
+                            	<button type="submit">Add to cart</button>
+                            </form>
                         </div>
                     </div>
                 </c:forEach>
