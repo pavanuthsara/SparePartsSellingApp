@@ -71,7 +71,7 @@
                 </select>
             </div>
             <div class="flex space-x-4">
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
                     <i class="fas fa-save mr-2"></i>Save Changes
                 </button>
                 <a href="sellerDashboard.jsp" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">

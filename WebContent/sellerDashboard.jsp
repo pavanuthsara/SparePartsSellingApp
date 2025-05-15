@@ -18,7 +18,9 @@
     
     // Get products from request attribute
     ArrayList<SparePart> products = (ArrayList<SparePart>) request.getAttribute("products");
+    
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,15 +94,18 @@
             <% } else { %>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <% for (SparePart product : products) { %>
+                    	<% String productimg = product.getImagePath(); 
+                    		System.out.println(productimg);
+                    	%>
                         <div class="bg-white p-6 rounded-lg shadow-md">
-                            <img src="./images<%= product.getImagePath() %>" alt="<%= product.getTitle() %>" class="w-full h-48 object-cover rounded-md mb-4">
+                            <img src="${pageContext.request.contextPath}/images/${productimg}" alt="<%= product.getTitle() %>" class="w-full h-48 object-cover rounded-md mb-4">
                             <h3 class="text-xl font-semibold"><%= product.getTitle() %></h3>
-                            <p class="text-gray-600">Price: $<%= product.getUnitPrice() %></p>
+                            <p class="text-gray-600">Price: LKR <%= product.getUnitPrice() %></p>
                             <p class="text-gray-600">Quantity: <%= product.getQuantity() %></p>
                             <p class="text-gray-600">Location: <%= product.getLocation() %></p>
                             <p class="text-gray-600">Status: <%= product.getStatus() %></p>
                             <div class="mt-4 flex space-x-2">
-                                <a href="editProduct.jsp?id=<%= product.getId() %>" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                                <a href="editProduct.jsp?id=<%= product.getId() %>" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
                                     <i class="fas fa-edit mr-2"></i>Edit
                                 </a>
                                 <form action="DeleteProduct" method="post">

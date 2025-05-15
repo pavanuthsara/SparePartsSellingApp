@@ -100,6 +100,10 @@ public class SparePart {
 	public String getImagePath() {
 		return image;
 	}
+	
+	public String getImage() {
+		return image;
+	}
 
 	public void setImagePath(String image) {
 		this.image = image;

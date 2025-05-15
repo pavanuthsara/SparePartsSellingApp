@@ -43,21 +43,21 @@
             <h2 class="text-3xl font-bold text-center mb-12">Featured Spare Parts</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-white shadow rounded-lg p-4">
-                    <img src="https://via.placeholder.com/150" alt="Car Battery" class="w-full h-40 object-cover rounded">
+                    <img src="./img/car_battery.webp" alt="Car Battery" class="w-full h-40 object-cover rounded">
                     <h3 class="text-xl font-semibold mt-4">Car Battery</h3>
-                    <p class="text-gray-600">$50.00</p>
-                    <a href="#" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">View Details</a>
+                    <p class="text-gray-600">LKR 7500.00</p>
+                    <a href="" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">View Details</a>
                 </div>
                 <div class="bg-white shadow rounded-lg p-4">
-                    <img src="https://via.placeholder.com/150" alt="Brake Pads" class="w-full h-40 object-cover rounded">
+                    <img src="./img/brake.jpg" alt="Brake Pads" class="w-full h-40 object-cover rounded">
                     <h3 class="text-xl font-semibold mt-4">Brake Pads</h3>
-                    <p class="text-gray-600">$30.00</p>
+                    <p class="text-gray-600">LKR 3500.00</p>
                     <a href="#" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">View Details</a>
                 </div>
                 <div class="bg-white shadow rounded-lg p-4">
-                    <img src="https://via.placeholder.com/150" alt="Oil Filter" class="w-full h-40 object-cover rounded">
+                    <img src="./img/oil.jpeg" alt="Oil Filter" class="w-full h-40 object-cover rounded">
                     <h3 class="text-xl font-semibold mt-4">Oil Filter</h3>
-                    <p class="text-gray-600">$15.00</p>
+                    <p class="text-gray-600">LKR 5500.00</p>
                     <a href="#" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">View Details</a>
                 </div>
             </div>
