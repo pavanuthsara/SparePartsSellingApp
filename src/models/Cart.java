@@ -33,6 +33,16 @@ public class Cart {
 			System.out.println(i.getProductId());;
 		}
 	}
+
+	public ArrayList<CartItem> getItems() {
+		return items;
+	}
+
+	public void setItems(ArrayList<CartItem> items) {
+		this.items = items;
+	}
+	
+	
 	
 
 }

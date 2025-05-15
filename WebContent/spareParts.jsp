@@ -99,6 +99,7 @@
                             <form method="get" action="AddToCart" >
                             	<input type="hidden" value=${product.id} name="productId">
                             	<input type="hidden" value=${product.unitPrice} name="unitPrice">
+                            	<input type="hidden" value=${product.title} name="title">
                             	<input type="number" placeholder="quantity" name="quantity">
                             	<button type="submit">Add to cart</button>
                             </form>

@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,26 +11,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import models.Cart;
+import models.Order;
+import services.OrderService;
 
-@WebServlet("/CartCheckout")
-public class CartCheckout extends HttpServlet {
+@WebServlet("/GetBuyerOrders")
+public class GetBuyerOrders extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public CartCheckout() {
+
+    public GetBuyerOrders() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Get orders related to buyer servlet called");
+		
 		HttpSession session = request.getSession();
-		Cart cart = (Cart) session.getAttribute("cart");
+        String buyerEmail = (String) session.getAttribute("buyerEmail");
+
+        ArrayList<Order> result = OrderService.getOrdersOfBuyer(buyerEmail);
 		
-		request.setAttribute("cartItems", cart.getItems());
-		request.setAttribute("totalPrice", cart.checkout());
+		request.setAttribute("orders", result);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("order.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("buyerOrders.jsp");
 		dispatcher.forward(request, response);
 	}
-
 
 }

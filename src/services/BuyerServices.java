@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import config.DBConnect;
 import models.Buyer;
+import models.Order;
 
 public class BuyerServices {
 	
@@ -185,4 +186,5 @@ public class BuyerServices {
 		
 		return success;
 	}
+	
 }
