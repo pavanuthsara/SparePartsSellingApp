@@ -15,8 +15,6 @@ public class OrderService {
 	
 	public static boolean placeOrder(Order order) {
 		String sqlQuery = "insert into buyerOrder(shippingAddress, specialNote, mobileNumber, paymentMethod, totalCost, date, buyerEmail, fastDelivery) values (?, ?, ?, ?, ?, ?, ?, ?);";
-		String sqlQuerySupport = "select * from buyerOrder order by orderId desc limit 1;";
-		String sqlQuery2 = "insert into orderProducts(orderId ,productId ) values (?,?);";
 		
 		try {
 			DBConnect dbConnect = DBConnect.getInstance();
