@@ -1,24 +1,23 @@
 package models;
 
 public class User {
-	protected int userId;
 	protected String name;
 	protected String email;
 	protected String password;
+	protected String mobileNumber;
 	
-	public User(int userId, String name, String email, String password) {
-		this.userId = userId;
+	public User(String name, String email, String password, String mobileNumber) {
 		this.name = name;
 		this.email = email;
 		this.password = password;
+		this.mobileNumber = mobileNumber;
 	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
+	
+	public User(String name, String email, String mobileNumber) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.mobileNumber = mobileNumber;
 	}
 
 	public String getName() {
@@ -44,9 +43,13 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-	
-	
 
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+	
 }
