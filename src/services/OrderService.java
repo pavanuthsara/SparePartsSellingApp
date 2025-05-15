@@ -55,7 +55,7 @@ public class OrderService {
 	
 	public static ArrayList<Order> getOrdersOfBuyer(String buyerEmail) {
 		System.out.println("Get orders of buyer");
-        String sql = "select * from buyerOrder where buyerEmail=" + buyerEmail +  ";";
+        String sql = "select * from buyerOrder where buyerEmail=?;";
         
         ArrayList<Order> orderList = new ArrayList<Order>();
         
@@ -64,10 +64,13 @@ public class OrderService {
             dbConnect = DBConnect.getInstance();
             Connection con = dbConnect.getConnection();
             
-            Statement stmt = con.createStatement();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, buyerEmail);
+            
+            System.out.println("Query statement : " + stmt);
             
             // Execute query
-            ResultSet resultSet = stmt.executeQuery(sql);
+            ResultSet resultSet = stmt.executeQuery();
 
             // Process the result set
             while (resultSet.next()) {
