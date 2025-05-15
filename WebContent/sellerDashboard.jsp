@@ -42,7 +42,7 @@
         <nav class="flex-1 p-4">
             <ul class="space-y-2">
                 <li>
-                    <a href="sellerDashboard.jsp" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
+                    <a href="GetSellerProducts" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
                         <i class="fas fa-tachometer-alt mr-3"></i>
                         <span>Dashboard</span>
                     </a>
@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="orders.jsp" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
+                    <a href="GetSellerProducts" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
                         <i class="fas fa-shopping-cart mr-3"></i>
                         <span>Orders</span>
                     </a>
@@ -92,28 +92,29 @@
             <% if (products == null || products.isEmpty()) { %>
                 <p class="text-gray-700">No products found. Add products using the "Add Product" option.</p>
             <% } else { %>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <% for (SparePart product : products) { %>
-                    	<% String productimg = product.getImagePath(); 
-                    		System.out.println(productimg);
-                    	%>
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <img src="${pageContext.request.contextPath}/images/${productimg}" alt="<%= product.getTitle() %>" class="w-full h-48 object-cover rounded-md mb-4">
-                            <h3 class="text-xl font-semibold"><%= product.getTitle() %></h3>
-                            <p class="text-gray-600">Price: LKR <%= product.getUnitPrice() %></p>
-                            <p class="text-gray-600">Quantity: <%= product.getQuantity() %></p>
-                            <p class="text-gray-600">Location: <%= product.getLocation() %></p>
-                            <p class="text-gray-600">Status: <%= product.getStatus() %></p>
-                            <div class="mt-4 flex space-x-2">
-                                <a href="editProduct.jsp?id=<%= product.getId() %>" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
-                                    <i class="fas fa-edit mr-2"></i>Edit
-                                </a>
-                                <form action="DeleteProduct" method="post">
-                                    <input type="hidden" name="productId" value="<%= product.getId() %>">
-                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" onclick="return confirm('Are you sure you want to delete this product?')">
-                                        <i class="fas fa-trash mr-2"></i>Delete
-                                    </button>
-                                </form>
+                        <% String productimagepath = product.getImagePath(); %>
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                            <img src="${pageContext.request.contextPath}/images/<%= productimagepath %>" alt="<%= product.getTitle() %>" class="w-full h-48 object-cover" onerror="this.src='https://via.placeholder.com/150';">
+                            <div class="p-4">
+                                <h2 class="text-xl font-semibold mb-2"><%= product.getTitle() %></h2>
+                                <p class="text-gray-600 mb-2">Product ID: <%= product.getId() %></p>
+                                <p class="text-lg font-bold text-orange-600 mb-2"><%= product.getUnitPrice() %> LKR</p>
+                                <p class="text-sm text-gray-500 mb-1">Quantity: <%= product.getQuantity() %></p>
+                                <p class="text-sm text-gray-500 mb-1">Location: <%= product.getLocation() %></p>
+                                <p class="text-sm text-gray-500 mb-1">Status: <%= product.getStatus() %></p>
+                                <div class="mt-4 flex space-x-2">
+                                    <a href="editProduct.jsp?id=<%= product.getId() %>" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 flex items-center">
+                                        <i class="fas fa-edit mr-2"></i>Edit
+                                    </a>
+                                    <form action="DeleteProduct" method="post">
+                                        <input type="hidden" name="productId" value="<%= product.getId() %>">
+                                        <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 flex items-center" onclick="return confirm('Are you sure you want to delete this product?')">
+                                            <i class="fas fa-trash mr-2"></i>Delete
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     <% } %>

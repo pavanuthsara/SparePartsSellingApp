@@ -48,7 +48,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="orders.jsp" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
+                    <a href="GetSellerProducts" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
                         <i class="fas fa-shopping-cart mr-3"></i>
                         <span>Orders</span>
                     </a>

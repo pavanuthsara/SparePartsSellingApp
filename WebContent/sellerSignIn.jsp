@@ -13,6 +13,20 @@
 
     <h2 class="text-center text-gray-600 mb-6">Need a seller account? <a href="./sellerSignUp.jsp" class="text-yellow-700 hover:underline">Sign up here</a></h2>
 
+    <!-- Display error message if present -->
+    <%
+        String errorMessage = (String) session.getAttribute("errorMessage");
+        if (errorMessage != null) {
+    %>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <span class="block sm:inline"><%= errorMessage %></span>
+        </div>
+    <%
+            // Clear the error message after displaying it
+            session.removeAttribute("errorMessage");
+        }
+    %>
+
     <!-- Sign in form for seller -->
     <form action="SellerSignIn" method="post" class="space-y-4">
         <div>

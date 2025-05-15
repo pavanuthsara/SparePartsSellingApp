@@ -186,6 +186,7 @@ public class SparePartServices {
                 String image = resultSet.getString("image"); 
                 String sellerEmail = resultSet.getString("sellerEmail"); 
                 
+                System.out.println("image : " + image);
                 productList.add(new SparePart(id, title,quantity, unitPrice, location,  description, status, image, sellerEmail));
             }
             

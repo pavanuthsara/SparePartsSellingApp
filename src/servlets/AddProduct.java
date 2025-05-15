@@ -66,9 +66,8 @@ public class AddProduct extends HttpServlet {
         request.setAttribute("sellerEmail", sellerEmail);
         
         // Forward to a result page
-        RequestDispatcher dispatcher = request.getRequestDispatcher("GetSellerProducts");
-        dispatcher.forward(request, response);
-		
+		response.sendRedirect("GetSellerProducts");
+        
 	}
 
 }
