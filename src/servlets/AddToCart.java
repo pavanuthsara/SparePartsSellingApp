@@ -42,7 +42,6 @@ public class AddToCart extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("cart", cart);
-//		session.setAttribute("noOfCartItems", noOfItems);
 		
 		request.setAttribute("noOfCartItems", noOfItems);
 		

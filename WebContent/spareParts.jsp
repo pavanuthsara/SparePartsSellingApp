@@ -48,13 +48,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="myOrders.jsp" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
+                    <a href="GetBuyerOrders" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
                         <i class="fas fa-shopping-cart mr-3"></i>
                         <span>My Orders</span>
                     </a>
                 </li>
                 <li>
-                    <a href="GetAllProducts" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
+                    <a href="BuyerProfile" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
                         <i class="fas fa-user mr-3"></i>
                         <span>Profile</span>
                     </a>
