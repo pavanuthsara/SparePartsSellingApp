@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="GetAllProducts" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
+                    <a href="GetAllProducts" class="flex items-center p-2 rounded-lg bg-gray-700">
                         <i class="fas fa-store mr-3"></i>
                         <span>Browse Products</span>
                     </a>
@@ -80,15 +80,28 @@
         </button>
         <div class="container mx-auto px-4 py-8">
             <h1 class="text-3xl font-bold text-center mb-8">Spare Parts Catalog</h1>
-            <h3>Cart items : ${noOfCartItems}</h3> 
-            <a href="CartCheckout">Proceed to cehckout</a>
+            <div class="flex items-center justify-between mb-6 bg-white p-4 rounded-lg shadow-md">
+                <h3 class="text-lg font-semibold text-gray-700">
+                    <i class="fas fa-shopping-cart mr-2"></i>Cart Items: ${noOfCartItems}
+                </h3>
+                <div class="flex space-x-4">
+                    <a href="CartCheckout" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 flex items-center">
+                        <i class="fas fa-checkout mr-2"></i>Proceed to Checkout
+                    </a>
+                    <form action="ClearCart" method="post">
+                        <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 flex items-center" onclick="return confirm('Are you sure you want to clear your cart?');">
+                            <i class="fas fa-trash-alt mr-2"></i>Clear Cart
+                        </button>
+                    </form>
+                </div>
+            </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <c:forEach var="product" items="${products}">
                     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
                         <img src="${pageContext.request.contextPath}/images/${product.imagePath}" alt="${product.title}" class="w-full h-48 object-cover" onerror="this.src='https://via.placeholder.com/150';">
                         <div class="p-4">
                             <h2 class="text-xl font-semibold mb-2">${product.title}</h2>
-                            <p class="text-gray-600 mb-2">Product ID : ${product.id}</p>
+                            <p class="text-gray-600 mb-2">Product ID: ${product.id}</p>
                             <p class="text-gray-600 mb-2">${product.description}</p>
                             <p class="text-lg font-bold text-orange-600 mb-2">${product.unitPrice} LKR</p>
                             <p class="text-sm text-gray-500 mb-1">Quantity: ${product.quantity}</p>
@@ -96,12 +109,12 @@
                             <p class="text-sm text-gray-500 mb-1">Status: ${product.status}</p>
                             <p class="text-sm text-gray-500">Seller: ${product.sellerEmail}</p>
                             
-                            <form method="get" action="AddToCart" >
-                            	<input type="hidden" value=${product.id} name="productId">
-                            	<input type="hidden" value=${product.unitPrice} name="unitPrice">
-                            	<input type="hidden" value=${product.title} name="title">
-                            	<input type="number" placeholder="quantity" name="quantity">
-                            	<button type="submit">Add to cart</button>
+                            <form method="get" action="AddToCart">
+                                <input type="hidden" value="${product.id}" name="productId">
+                                <input type="hidden" value="${product.unitPrice}" name="unitPrice">
+                                <input type="hidden" value="${product.title}" name="title">
+                                <input type="number" placeholder="Quantity" name="quantity" class="w-full p-2 border rounded mb-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" min="1" required>
+                                <button type="submit" class="w-full bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600">Add to Cart</button>
                             </form>
                         </div>
                     </div>
